@@ -1,0 +1,392 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>DC_Channel</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-12-11"><meta name="DC.source" content="DC_Channel.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">PDF Theoritical</a></li><li><a href="#3">SNR Calculation:</a></li></ul></div><pre class="codeinput">close <span class="string">all</span>;
+clear <span class="string">variables</span>;
+
+<span class="comment">% Taking values from the Paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=1205458&amp;tag=1</span>
+
+<span class="comment">% Distance b/w Tx &amp; Rx.(Meter Square)</span>
+A = 0.0001;
+
+<span class="comment">% Half-Power Semi-Angle (Degree)</span>
+THETA = 50;
+THETA = deg2rad(THETA);
+
+<span class="comment">% Order of the Lambertian Emissison</span>
+m = -1*(log(2)/log(cos(THETA)));
+
+<span class="comment">% Gain of Optical Filter</span>
+Ts = 1;
+
+<span class="comment">% Field of View at the Receiver (Degree)</span>
+Psi_c = 60;
+Psi_c = deg2rad(Psi_c);
+
+<span class="comment">% Refractive Index</span>
+n = 1.5;
+
+<span class="comment">% Height of Tx from base (Meter)</span>
+height = 2.5;
+
+<span class="comment">% Number of Rx Samples at different Distances</span>
+samples = 200000;
+
+<span class="comment">% Radius of the Cone</span>
+radius = height*tan(THETA);
+
+<span class="comment">% Location of Rx on 2D Co-ordinate system with center at (0,0)</span>
+[x,y] = randcircle(samples, height*tan(THETA));
+
+<span class="comment">% Angle of Irradiance (Degree)</span>
+D  = sqrt((x.^2+y.^2));
+<span class="comment">% for i=1:1:samples</span>
+Phi = atan(D./height);
+<span class="comment">% end</span>
+
+<span class="comment">% Angle of Incidence (Degree)</span>
+Psi = Phi;
+
+<span class="comment">% Distance between Transmitter and Receiver (Meter)</span>
+<span class="comment">% d = height*tan(Phi);</span>
+d = sqrt(D.^2 + height^2);
+
+<span class="comment">% H(0) Channel DC Gain</span>
+G = zeros(1,samples);
+H = zeros(1,samples);
+const1 = (1/(2*pi)* A * Ts);
+
+<span class="keyword">for</span> i=1:1:samples
+    <span class="keyword">if</span> Psi(i) &gt; Psi_c
+        G(i) = 0;
+        H(i) = 0;
+    <span class="keyword">else</span>
+        G(i) = const1 * (n*n)/(sin(Psi_c)*sin(Psi_c));
+        H(i) = (G(i)*(m +1)*(height^(m+1)))/((d(i))^((m+3)));
+<span class="comment">%         H(i) = ;</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+count=1;
+H = sort(H);
+interval = min(H):0.0000005:max(H);
+<span class="keyword">for</span> i=1:1:length(interval)
+    max = interval(i)+0.0000005;
+    min = interval(i) - 0.0000005;
+    interval1(i) = 0;
+    <span class="keyword">for</span> j=count:1:samples
+        <span class="keyword">if</span>(H(j)&gt;= min &amp;&amp; H(j)&lt; max)
+            interval1(i) = interval1(i) + 1;
+            count=count +1;
+            interval2(i)= count;
+        <span class="keyword">else</span>
+            <span class="keyword">break</span>;
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    interval1(i) = interval1(i)/samples;
+    interval2(i) = interval2(i)/samples;
+<span class="keyword">end</span>
+</pre><h2 id="2">PDF Theoritical</h2><pre class="codeinput">theoreticalPDF = theoriticalPDF(interval,const1,height,radius,m);
+plot(interval,interval1,<span class="string">'-'</span>);
+hold <span class="string">on</span>
+plot(interval,theoreticalPDF,<span class="string">'-*'</span>);
+hold <span class="string">off</span>
+title(<span class="string">"PDF of DC Channel Gain"</span>);
+ylabel(<span class="string">"Probability"</span>);
+xlabel(<span class="string">"H(0)"</span>);
+legend(<span class="string">"Simulated"</span>,<span class="string">"Theoritical"</span>);
+figure
+plot(interval,interval2,<span class="string">'-*'</span>)
+title(<span class="string">"CDF of DC Channel Gain"</span>);
+ylabel(<span class="string">"Probability"</span>);
+xlabel(<span class="string">"H(0)"</span>);
+</pre><img vspace="5" hspace="5" src="DC_Channel_01.png" alt=""> <img vspace="5" hspace="5" src="DC_Channel_02.png" alt=""> <h2 id="3">SNR Calculation:</h2><pre class="codeinput"><span class="comment">% Transmit Power</span>
+Pt=0.004; <span class="comment">% in Watts</span>
+
+<span class="comment">% O/E Conversion</span>
+R = 0.53; <span class="comment">% A/W</span>
+
+<span class="comment">% Bandwidth in hertz</span>
+B = 22000;
+
+<span class="comment">% Elementary Charge in Columbs</span>
+q = 1.6*(10^-19);
+
+<span class="comment">% Background PSD</span>
+Pbg = 10^-9;
+
+<span class="comment">% Received Power</span>
+Pr = (H.^2).*(Pt);
+
+<span class="comment">% SNR</span>
+SNR = 10*log10(((R^2)*Pr.^2)/(B*q*R*Pbg));
+
+<span class="comment">% Histogram</span>
+count=1;
+MIN = SNR(1);
+MAX = SNR(length(SNR));
+min = MIN - 3;
+max = MIN + 3;
+i=1;
+<span class="keyword">while</span> count &lt; length(SNR)
+    interval4(i) = (min + max)/2;
+    interval3(i) = 0;
+    <span class="keyword">for</span> j=count:1:samples
+        <span class="keyword">if</span>(SNR(j)&gt;= min &amp;&amp; SNR(j)&lt; max)
+            count=count +1;
+            interval3(i)= count;
+        <span class="keyword">else</span>
+            <span class="keyword">break</span>;
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    interval3(i) = interval3(i)/samples;
+    i=i+1;
+    max = max + 3;
+    min = min + 3;
+<span class="keyword">end</span>
+
+figure
+histogram(SNR,12);
+xlabel(<span class="string">"SNR"</span>)
+ylabel(<span class="string">"Number of Samples"</span>)
+title(<span class="string">"Histogram of SNR"</span>)
+figure
+plot(interval4,interval3,<span class="string">'-.'</span>);
+title(<span class="string">"Plot of Cumulative Distribution of SNR"</span>)
+ylabel(<span class="string">"Probability"</span>);
+xlabel(<span class="string">"SNR"</span>);
+</pre><img vspace="5" hspace="5" src="DC_Channel_03.png" alt=""> <img vspace="5" hspace="5" src="DC_Channel_04.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+close all;
+clear variables;
+
+% Taking values from the Paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1205458&tag=1
+
+% Distance b/w Tx & Rx.(Meter Square)
+A = 0.0001;
+
+% Half-Power Semi-Angle (Degree)
+THETA = 50;
+THETA = deg2rad(THETA);
+
+% Order of the Lambertian Emissison
+m = -1*(log(2)/log(cos(THETA)));
+
+% Gain of Optical Filter
+Ts = 1;
+
+% Field of View at the Receiver (Degree)
+Psi_c = 60;
+Psi_c = deg2rad(Psi_c);
+
+% Refractive Index
+n = 1.5;
+
+% Height of Tx from base (Meter)
+height = 2.5;
+
+% Number of Rx Samples at different Distances
+samples = 200000;
+
+% Radius of the Cone
+radius = height*tan(THETA);
+
+% Location of Rx on 2D Co-ordinate system with center at (0,0)
+[x,y] = randcircle(samples, height*tan(THETA));
+
+% Angle of Irradiance (Degree)
+D  = sqrt((x.^2+y.^2));
+% for i=1:1:samples
+Phi = atan(D./height);
+% end
+
+% Angle of Incidence (Degree)
+Psi = Phi;
+
+% Distance between Transmitter and Receiver (Meter)
+% d = height*tan(Phi);
+d = sqrt(D.^2 + height^2);
+
+% H(0) Channel DC Gain
+G = zeros(1,samples);
+H = zeros(1,samples);
+const1 = (1/(2*pi)* A * Ts);
+
+for i=1:1:samples
+    if Psi(i) > Psi_c
+        G(i) = 0;
+        H(i) = 0;
+    else
+        G(i) = const1 * (n*n)/(sin(Psi_c)*sin(Psi_c));
+        H(i) = (G(i)*(m +1)*(height^(m+1)))/((d(i))^((m+3)));
+%         H(i) = ;
+    end    
+end
+count=1;
+H = sort(H);
+interval = min(H):0.0000005:max(H);
+for i=1:1:length(interval)
+    max = interval(i)+0.0000005;
+    min = interval(i) - 0.0000005;
+    interval1(i) = 0;
+    for j=count:1:samples
+        if(H(j)>= min && H(j)< max)
+            interval1(i) = interval1(i) + 1;
+            count=count +1;
+            interval2(i)= count;
+        else
+            break;
+        end
+    end
+    interval1(i) = interval1(i)/samples;
+    interval2(i) = interval2(i)/samples;
+end
+
+%% PDF Theoritical
+
+theoreticalPDF = theoriticalPDF(interval,const1,height,radius,m);
+plot(interval,interval1,'-');
+hold on
+plot(interval,theoreticalPDF,'-*');
+hold off
+title("PDF of DC Channel Gain");
+ylabel("Probability");
+xlabel("H(0)");
+legend("Simulated","Theoritical");
+figure
+plot(interval,interval2,'-*')
+title("CDF of DC Channel Gain");
+ylabel("Probability");
+xlabel("H(0)");
+
+%% SNR Calculation:
+
+% Transmit Power
+Pt=0.004; % in Watts
+
+% O/E Conversion
+R = 0.53; % A/W
+
+% Bandwidth in hertz
+B = 22000;
+
+% Elementary Charge in Columbs
+q = 1.6*(10^-19);
+
+% Background PSD
+Pbg = 10^-9;
+
+% Received Power
+Pr = (H.^2).*(Pt);
+
+% SNR
+SNR = 10*log10(((R^2)*Pr.^2)/(B*q*R*Pbg));
+
+% Histogram
+count=1;
+MIN = SNR(1);
+MAX = SNR(length(SNR));
+min = MIN - 3;
+max = MIN + 3;
+i=1;
+while count < length(SNR)
+    interval4(i) = (min + max)/2;
+    interval3(i) = 0;
+    for j=count:1:samples
+        if(SNR(j)>= min && SNR(j)< max)            
+            count=count +1;
+            interval3(i)= count;
+        else
+            break;
+        end
+    end    
+    interval3(i) = interval3(i)/samples;
+    i=i+1;    
+    max = max + 3;
+    min = min + 3;    
+end
+
+figure
+histogram(SNR,12);
+xlabel("SNR")
+ylabel("Number of Samples")
+title("Histogram of SNR")
+figure
+plot(interval4,interval3,'-.');
+title("Plot of Cumulative Distribution of SNR")
+ylabel("Probability");
+xlabel("SNR");
+
+
+
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>

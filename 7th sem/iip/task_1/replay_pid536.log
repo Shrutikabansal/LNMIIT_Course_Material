@@ -1,0 +1,47 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 231 ciObject found
+ciMethod org/jdom/Text getText ()Ljava/lang/String; 4385 1 548 0 0
+ciMethod org/jdom/EntityRef getValue ()Ljava/lang/String; 0 0 1 0 -1
+ciMethod org/jdom/Element getAdditionalNamespaces ()Ljava/util/List; 4097 1 15426 0 0
+ciMethod org/jdom/Element getAttributeValue (Ljava/lang/String;Lorg/jdom/Namespace;)Ljava/lang/String; 4097 1 18822 0 0
+ciMethod org/jdom/Element getAttributeValue (Ljava/lang/String;Lorg/jdom/Namespace;Ljava/lang/String;)Ljava/lang/String; 4097 1 18822 0 0
+ciMethod org/jdom/Element getAttributes ()Ljava/util/List; 29409 1 3676 0 0
+ciMethod org/jdom/Element getContent ()Ljava/util/List; 29385 1 3673 0 0
+ciMethod org/jdom/Element getName ()Ljava/lang/String; 8849 1 1106 0 0
+ciMethod org/jdom/Element getNamespace ()Lorg/jdom/Namespace; 3937 1 492 0 0
+ciMethod org/jdom/ContentList get (I)Ljava/lang/Object; 91441 1 42375 0 160
+ciMethod org/jdom/ContentList size ()I 43745 1 5468 0 0
+ciMethod org/jdom/AttributeList get (Ljava/lang/String;Lorg/jdom/Namespace;)Ljava/lang/Object; 4097 1 18819 0 0
+ciMethod org/jdom/AttributeList indexOf (Ljava/lang/String;Lorg/jdom/Namespace;)I 4097 1 18817 0 0
+ciMethod org/jdom/AttributeList size ()I 29385 1 3673 0 0
+ciMethod org/jdom/Namespace getPrefix ()Ljava/lang/String; 1489 1 186 0 0
+ciMethod org/jdom/Namespace getURI ()Ljava/lang/String; 29385 1 3673 0 0
+ciMethod java/lang/Object equals (Ljava/lang/Object;)Z 2065 1 19414 0 -1
+ciMethod java/lang/String length ()I 4097 1 288502 0 64
+ciMethod java/lang/String charAt (I)C 4097 1 1303527 0 160
+ciMethod java/lang/String getChars (II[CI)V 4097 1 5657 0 320
+ciMethod java/lang/String equals (Ljava/lang/Object;)Z 2497 32769 20847 0 -1
+ciMethod java/lang/System arraycopy (Ljava/lang/Object;ILjava/lang/Object;II)V 120833 1 15104 0 -1
+ciMethod java/lang/StringBuffer <init> (Ljava/lang/String;)V 425 1 1325 0 -1
+ciMethod java/lang/StringBuffer append (Ljava/lang/String;)Ljava/lang/StringBuffer; 2169 1 40191 0 1728
+ciMethod java/lang/StringBuffer toString ()Ljava/lang/String; 97 1 6169 0 -1
+ciMethod java/lang/AbstractStringBuilder ensureCapacityInternal (I)V 4097 1 477959 0 704
+ciMethod java/lang/AbstractStringBuilder newCapacity (I)I 4097 1 5666 0 160
+ciMethod java/lang/AbstractStringBuilder hugeCapacity (I)I 0 0 1 0 -1
+ciMethod java/lang/AbstractStringBuilder append (Ljava/lang/String;)Ljava/lang/AbstractStringBuilder; 4097 1 5747 0 1056
+ciMethod java/lang/AbstractStringBuilder appendNull ()Ljava/lang/AbstractStringBuilder; 9 1 28 0 0
+ciMethod java/util/List size ()I 0 0 1 0 -1
+ciMethod java/util/List get (I)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/Vector size ()I 1025 1 128 0 0
+ciMethod java/util/Vector lastIndexOf (Ljava/lang/Object;)I 4097 1 15424 0 0
+ciMethod java/util/Vector lastIndexOf (Ljava/lang/Object;I)I 4097 1 15424 0 0
+ciMethod java/util/Vector elementAt (I)Ljava/lang/Object; 305 1 5158 0 -1
+ciMethod java/util/Collections unmodifiableList (Ljava/util/List;)Ljava/util/List; 4065 1 11880 0 -1
+ciMethod java/util/Collections$EmptyList size ()I 1049 1 131 0 0
+ciMethod java/lang/Math min (II)I 4097 1 97207 0 -1
+ciMethod java/util/Arrays copyOf ([CI)[C 4097 1 23386 0 480
+ciMethod java/io/Writer write (I)V 0 0 1 0 -1
+ciMethod java/io/Writer write (Ljava/lang/String;)V 0 0 1 0 -1
+ciMethodData java/lang/String charAt (I)C 2 1303527 orig 264 136 98 103 112 0 0 0 0 240 59 104 110 0 0 0 0 120 1 0 0 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 57 15 159 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 80 0 0 0 255 255 255 255 7 0 1 0 0 0 0 0 data 10 0x10007 0x0 0x40 0x13e204 0xa0007 0x13e22d 0x30 0x0 0x120002 
