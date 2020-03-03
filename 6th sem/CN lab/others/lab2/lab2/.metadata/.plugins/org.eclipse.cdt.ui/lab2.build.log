@@ -1,0 +1,6 @@
+20:50:57 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+
+20:50:57 Build Finished (took 59ms)
+

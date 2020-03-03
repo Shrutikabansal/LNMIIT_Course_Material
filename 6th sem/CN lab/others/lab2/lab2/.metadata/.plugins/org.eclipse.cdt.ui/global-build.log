@@ -1,0 +1,218 @@
+19:46:38 **** Build of configuration debug for project lab2 ****
+make MODE=debug all 
+data_link_layer.cc
+network_layer.cc
+Creating executable: out/gcc-debug//lab2_dbg
+19:51:27 **** Incremental Build of configuration debug for project lab2 ****
+make MODE=debug all 
+make: Nothing to be done for 'all'.
+19:57:01 **** Incremental Build of configuration debug for project lab2 ****
+make MODE=debug all 
+make: Nothing to be done for 'all'.
+19:57:05 **** Incremental Build of configuration debug for project lab2 ****
+make MODE=debug all 
+make: Nothing to be done for 'all'.
+19:57:06 **** Incremental Build of configuration debug for project lab2 ****
+make MODE=debug all 
+make: Nothing to be done for 'all'.
+20:00:34 **** Incremental Build of configuration debug for project lab2 ****
+make MODE=debug all 
+MSGC: N_PDU.msg
+N_PDU_m.cc
+Creating executable: out/gcc-debug//lab2_dbg
+20:01:13 **** Incremental Build of configuration debug for project lab2 ****
+make MODE=debug all 
+MSGC: DL_PDU.msg
+DL_PDU_m.cc
+Creating executable: out/gcc-debug//lab2_dbg
+20:01:23 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+network_layer.cc
+DL_PDU_m.cc
+N_PDU_m.cc
+Creating executable: out/gcc-release//lab2
+20:18:38 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+In file included from network_layer.cc:16:0:
+network_layer.h:29:5: error: ‘cgate’ does not name a type
+     cgate* in;
+     ^~~~~
+network_layer.h:30:5: error: ‘cgate’ does not name a type
+     cgate* out;
+     ^~~~~
+network_layer.cc: In member function ‘virtual void Network_layer::initialize()’:
+network_layer.cc:23:5: error: ‘in’ was not declared in this scope
+     in=gate("gIn");
+     ^~
+network_layer.cc:23:5: note: suggested alternative: ‘yn’
+     in=gate("gIn");
+     ^~
+     yn
+network_layer.cc:24:5: error: ‘out’ was not declared in this scope
+     out=gate("gOut");
+     ^~~
+Makefile:104: recipe for target 'out/gcc-release//network_layer.o' failed
+make: *** [out/gcc-release//network_layer.o] Error 1
+20:19:12 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+Creating executable: out/gcc-release//lab2
+20:19:25 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+Creating executable: out/gcc-release//lab2
+20:19:59 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:06:09 **** Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+network_layer.cc: In member function ‘virtual void Network_layer::handleMessage(omnetpp::cMessage*)’:
+network_layer.cc:36:21: error: ‘class N_PDU’ has no member named ‘settype’; did you mean ‘setType’?
+               data->settype(1);
+                     ^~~~~~~
+                     setType
+Makefile:104: recipe for target 'out/gcc-release//network_layer.o' failed
+make: *** [out/gcc-release//network_layer.o] Error 1
+17:06:26 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+network_layer.cc: In member function ‘virtual void Network_layer::handleMessage(omnetpp::cMessage*)’:
+network_layer.cc:36:21: error: ‘class N_PDU’ has no member named ‘settype’; did you mean ‘setType’?
+               data->settype(1);
+                     ^~~~~~~
+                     setType
+make: *** [out/gcc-release//network_layer.o] Error 1
+Makefile:104: recipe for target 'out/gcc-release//network_layer.o' failed
+17:06:42 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+network_layer.cc: In member function ‘virtual void Network_layer::handleMessage(omnetpp::cMessage*)’:
+network_layer.cc:36:21: error: ‘class N_PDU’ has no member named ‘settype’; did you mean ‘setType’?
+               data->settype(1);
+                     ^~~~~~~
+                     setType
+make: *** [out/gcc-release//network_layer.o] Error 1
+Makefile:104: recipe for target 'out/gcc-release//network_layer.o' failed
+17:06:46 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+network_layer.cc: In member function ‘virtual void Network_layer::handleMessage(omnetpp::cMessage*)’:
+network_layer.cc:36:21: error: ‘class N_PDU’ has no member named ‘settype’; did you mean ‘setType’?
+               data->settype(1);
+                     ^~~~~~~
+                     setType
+make: *** [out/gcc-release//network_layer.o] Error 1
+Makefile:104: recipe for target 'out/gcc-release//network_layer.o' failed
+17:06:50 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+network_layer.cc: In member function ‘virtual void Network_layer::handleMessage(omnetpp::cMessage*)’:
+network_layer.cc:36:21: error: ‘class N_PDU’ has no member named ‘settype’; did you mean ‘setType’?
+               data->settype(1);
+                     ^~~~~~~
+                     setType
+Makefile:104: recipe for target 'out/gcc-release//network_layer.o' failed
+make: *** [out/gcc-release//network_layer.o] Error 1
+17:07:19 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+network_layer.cc
+Creating executable: out/gcc-release//lab2
+17:08:24 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:09:36 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:09:42 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:09:49 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:15:44 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+Creating executable: out/gcc-release//lab2
+17:31:03 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+Creating executable: out/gcc-release//lab2
+17:31:21 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+data_link_layer.cc: In member function ‘virtual void Data_link_layer::handleMessage(omnetpp::cMessage*)’:
+data_link_layer.cc:33:38: error: cannot convert ‘N_PDU*’ to ‘DL_PDU*’ in initialization
+         DL_PDU* data=new N_PDU("Data");
+                                      ^
+Makefile:104: recipe for target 'out/gcc-release//data_link_layer.o' failed
+make: *** [out/gcc-release//data_link_layer.o] Error 1
+17:47:28 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+data_link_layer.cc: In member function ‘virtual void Data_link_layer::handleMessage(omnetpp::cMessage*)’:
+data_link_layer.cc:33:38: error: cannot convert ‘N_PDU*’ to ‘DL_PDU*’ in initialization
+         DL_PDU *data=new N_PDU("Data");
+                                      ^
+make: *** [out/gcc-release//data_link_layer.o] Error 1
+Makefile:104: recipe for target 'out/gcc-release//data_link_layer.o' failed
+17:47:34 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+data_link_layer.cc: In member function ‘virtual void Data_link_layer::handleMessage(omnetpp::cMessage*)’:
+data_link_layer.cc:33:38: error: cannot convert ‘N_PDU*’ to ‘DL_PDU*’ in initialization
+         DL_PDU *data=new N_PDU("Data");
+                                      ^
+make: *** [out/gcc-release//data_link_layer.o] Error 1
+Makefile:104: recipe for target 'out/gcc-release//data_link_layer.o' failed
+17:49:13 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+data_link_layer.cc: In member function ‘virtual void Data_link_layer::handleMessage(omnetpp::cMessage*)’:
+data_link_layer.cc:33:38: error: cannot convert ‘N_PDU*’ to ‘DL_PDU*’ in initialization
+         DL_PDU* data=new N_PDU("Data");
+                                      ^
+Makefile:104: recipe for target 'out/gcc-release//data_link_layer.o' failed
+make: *** [out/gcc-release//data_link_layer.o] Error 1
+17:49:16 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+data_link_layer.cc: In member function ‘virtual void Data_link_layer::handleMessage(omnetpp::cMessage*)’:
+data_link_layer.cc:33:38: error: cannot convert ‘N_PDU*’ to ‘DL_PDU*’ in initialization
+         DL_PDU* data=new N_PDU("Data");
+                                      ^
+Makefile:104: recipe for target 'out/gcc-release//data_link_layer.o' failed
+make: *** [out/gcc-release//data_link_layer.o] Error 1
+17:49:42 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+data_link_layer.cc: In member function ‘virtual void Data_link_layer::handleMessage(omnetpp::cMessage*)’:
+data_link_layer.cc:33:32: error: cannot convert ‘N_PDU*’ to ‘DL_PDU*’ in initialization
+         DL_PDU *data=new N_PDU();
+                                ^
+make: *** [out/gcc-release//data_link_layer.o] Error 1
+Makefile:104: recipe for target 'out/gcc-release//data_link_layer.o' failed
+17:50:05 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+data_link_layer.cc
+Creating executable: out/gcc-release//lab2
+17:50:08 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:51:28 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:53:57 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+17:54:55 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+20:48:32 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+20:50:57 **** Incremental Build of configuration release for project lab2 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.

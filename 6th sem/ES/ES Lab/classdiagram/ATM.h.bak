@@ -1,0 +1,16 @@
+#ifndef ATM_h
+#define ATM_h
+
+class Session;
+
+class ATM {
+
+ public:
+
+    /**
+     * @element-type Session
+     */
+    Session *creates;
+};
+
+#endif // ATM_h
